@@ -5,6 +5,7 @@ In a monolithic architecture, each component and its associated components must 
 
 ![Screenshot 2022-08-15 at 16 01 55](https://user-images.githubusercontent.com/102330725/184660570-bd48311e-4da3-4ae2-8e94-acd6f71bc781.png)
 
+
 ### Create a Vagrantfile
 
 ```
@@ -90,3 +91,13 @@ Run commands
 - Run `npm install`
 
 - `npm start`
+
+Your app is ready ad listening on port 3000 appears once connected.
+
+<img width="485" alt="Screenshot 2022-08-15 at 17 32 24" src="https://user-images.githubusercontent.com/102330725/184676488-ce1b76fe-00cc-48e9-bcff-91c23bbf25dd.png">
+
+The app appears as:
+
+![Screenshot 2022-08-15 at 17 35 49](https://user-images.githubusercontent.com/102330725/184676826-3e241c92-2480-468b-8735-ec5313557a22.png)
+
+
