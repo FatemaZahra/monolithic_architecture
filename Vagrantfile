@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 #let's sync our app folder from localhost to VM
  config.vm.synced_folder ".", "/home/vagrant/app"
  
- config.vm.provision "file", source: "/Users/syedsadiqali/sparta/monolithic_architecture", destination: "/home/vagrant/provision.sh"
+ config.vm.provision :shell, path: "provision.sh"
 
  
 

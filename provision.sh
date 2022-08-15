@@ -1,6 +1,6 @@
 # update
 
-udo apt-get upgrade -y
+sudo apt-get update -y
 
 # upgrade
 
