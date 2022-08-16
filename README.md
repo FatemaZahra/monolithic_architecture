@@ -97,6 +97,3 @@ Your app is ready ad listening on port 3000 appears once connected.
 
 <img width="485" alt="Screenshot 2022-08-15 at 17 32 24" src="https://user-images.githubusercontent.com/102330725/184676488-ce1b76fe-00cc-48e9-bcff-91c23bbf25dd.png">
 
-The app appears as:
-
-![Screenshot 2022-08-15 at 17 35 49](https://user-images.githubusercontent.com/102330725/184676826-3e241c92-2480-468b-8735-ec5313557a22.png)
