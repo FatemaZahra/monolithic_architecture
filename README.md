@@ -5,7 +5,6 @@ In a monolithic architecture, each component and its associated components must 
 
 ![Screenshot 2022-08-15 at 16 01 55](https://user-images.githubusercontent.com/102330725/184660570-bd48311e-4da3-4ae2-8e94-acd6f71bc781.png)
 
-
 ### Create a Vagrantfile
 
 ```
@@ -28,6 +27,8 @@ Vagrant.configure("2") do |config|
 
 end
 ```
+
+Refer: [External Script](https://www.vagrantup.com/docs/provisioning/shell)
 
 ### Create a provision.sh file
 
@@ -99,5 +100,3 @@ Your app is ready ad listening on port 3000 appears once connected.
 The app appears as:
 
 ![Screenshot 2022-08-15 at 17 35 49](https://user-images.githubusercontent.com/102330725/184676826-3e241c92-2480-468b-8735-ec5313557a22.png)
-
-
