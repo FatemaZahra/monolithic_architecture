@@ -104,3 +104,6 @@ Your app is ready ad listening on port 3000 appears once connected.
 - To check Linux Var `echo $Name`
 - Env var we have a key word called `export` command ` export Last_Name=Zahra`
 - Check specific env variable `printenv Last_Name`
+- To make env variable Persistent
+- - `sudo nano ~/.bashrc`
+- - `source ~/.bashrc`
