@@ -97,3 +97,10 @@ Your app is ready ad listening on port 3000 appears once connected.
 
 <img width="485" alt="Screenshot 2022-08-15 at 17 32 24" src="https://user-images.githubusercontent.com/102330725/184676488-ce1b76fe-00cc-48e9-bcff-91c23bbf25dd.png">
 
+### Linux Variable & Env Variable in Linux - Windows - Mac
+
+- To check existing Env Var `env` or `printenv`
+- To create a var in Linux `Name=Fatema`
+- To check Linux Var `echo $Name`
+- Env var we have a key word called `export` command ` export Last_Name=Zahra`
+- Check specific env variable `printenv Last_Name`
