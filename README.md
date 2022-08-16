@@ -103,3 +103,8 @@ Your app is ready ad listening on port 3000 appears once connected.
 - To make env variable Persistent
 - - `sudo nano ~/.bashrc`
 - - `source ~/.bashrc`
+
+
+## Multi-Machine
+
+![Screenshot 2022-08-16 at 16 45 50](https://user-images.githubusercontent.com/102330725/184922480-dd8cceeb-dc3c-421c-bffe-bebb9dc6dfe6.png)
