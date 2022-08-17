@@ -115,3 +115,63 @@ Your app is ready ad listening on port 3000 appears once connected.
 ## Multi-Machine
 
 ![Screenshot 2022-08-16 at 16 45 50](https://user-images.githubusercontent.com/102330725/184922480-dd8cceeb-dc3c-421c-bffe-bebb9dc6dfe6.png)
+
+### To provision reverse proxy
+
+- Create a proxy_file with the following code:
+
+  ```
+  server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        root /var/www/html;
+
+
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name _;
+
+        location / {
+                proxy_pass http://localhost:3000;
+        }
+  }
+  ```
+
+- Run command `vagrant destroy`, remove the .vagrant file `rm -rf .vagrant`
+- Run `vagrant up` again
+- Run `vagrant ssh ap`
+- To run the app `npm install` and `npm start`
+
+## Dependencies for Configuration of MongoDB
+
+- Go to `vagrant ssh db`
+
+- `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927`
+
+- `echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list`
+
+- run `sudo apt-get update -y` `sudo apt-get upgrade -y`
+
+- `sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20`
+
+- Check the status of mongodb `systemctl status mongod`
+- If not active, run `sudo systemctl restart mongod` and `sudo systemctl enable mongod` and check the status again.
+- Run `cd/etc` then `ls` and `sudo nano mongod.conf`
+- Go to network interface and change bindip to `0.0.0.0`
+- `cat mongod.conf` to check
+- Run commands: `sudo systemctl restart mongod` `sudo systemctl enable mongod` `sudo systemctl status mongod`
+- Go back to the app again `vagarant ssh app`
+- `export DB_HOST=mongodb://192.168.56.11:27017/posts`
+- To check `printenv DB_HOST`
+- `cd app/app`
+- `npm start`
+- `ls`
+- `cd seeds`
+- `ls`
+- `node seed.js`
+- `npm start`
+
+```
+
+```

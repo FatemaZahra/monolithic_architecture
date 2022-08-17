@@ -48,6 +48,15 @@ sudo cp -f app/app/proxy_file /etc/nginx/sites-available/default
 # sudo nginx -t
 sudo systemctl restart nginx
 
+#declare DB_HOST env variable
+echo "DB_HOST=mongodb://192.168.56.11:27017/posts" | sudo tee -a /etc/environment
+printenv DB_HOST
+
+#seeding
+cd app/app
+npm install
+cd seeds
+node seed.js
 
 
 

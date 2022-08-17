@@ -18,6 +18,9 @@ Vagrant.configure("2") do |config|
         # creating a virtual machine ubuntu
         db.vm.network "private_network", ip: "192.168.56.11"
         # creating a private network
+        # sync app folder from localhost to VM
+        db.vm.synced_folder ".", "/home/vagrant/app"
+        db.vm.provision :shell, path: "provision_db.sh"
     end
 end
     
