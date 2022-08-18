@@ -157,20 +157,112 @@ Your app is ready ad listening on port 3000 appears once connected.
 
 - Check the status of mongodb `systemctl status mongod`
 - If not active, run `sudo systemctl restart mongod` and `sudo systemctl enable mongod` and check the status again.
+
+## Edit mongod.conf file
+
 - Run `cd/etc` then `ls` and `sudo nano mongod.conf`
 - Go to network interface and change bindip to `0.0.0.0`
 - `cat mongod.conf` to check
+
+## Restart DB
+
 - Run commands: `sudo systemctl restart mongod` `sudo systemctl enable mongod` `sudo systemctl status mongod`
+
+# Create Env variable and Relaunch the app
+
 - Go back to the app again `vagarant ssh app`
 - `export DB_HOST=mongodb://192.168.56.11:27017/posts`
 - To check `printenv DB_HOST`
 - `cd app/app`
 - `npm start`
+
+# Steps for seeding
+
 - `ls`
 - `cd seeds`
 - `ls`
 - `node seed.js`
 - `npm start`
+
+# For provisioning connection to db
+
+- Add following commands to the exisiting provision file
+
+  ```
+  #declare DB_HOST env variable
+  echo "DB_HOST=mongodb://192.168.56.11:27017/posts" | sudo tee -a /etc/environment
+  printenv DB_HOST
+
+  #seeding
+  cd app/app
+  npm install
+  cd seeds
+  node seed.js
+  ```
+
+- Create a provision file for db
+
+```
+# update
+
+sudo apt-get update -y
+
+# upgrade
+
+sudo apt-get upgrade -y
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv D68FA50FEA312927
+echo "deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20
+
+systemctl status mongod
+sudo systemctl restart mongod
+sudo systemctl enable mongod
+
+sudo cp -f app/app/mongodbconfig.conf /etc/mongod.conf
+sudo systemctl restart mongod
+sudo systemctl enable mongod
+sudo systemctl status mongod
+
+```
+
+- Add following commands to the vagrant file
+
+  ```
+  Vagrant.configure("2") do |config|
+    config.vm.define "app" do |app|
+        # creating a virtual machine ubuntu
+        app.vm.box = "ubuntu/bionic64"
+        # creating a private network
+        app.vm.network "private_network", ip: "192.168.56.10"
+        # sync app folder from localhost to VM
+        app.vm.synced_folder ".", "/home/vagrant/app"
+        # adding provision file
+        app.vm.provision :shell, path: "provision.sh"
+    end
+
+    config.vm.define "db" do |db|
+        db.vm.box = "ubuntu/bionic64"
+        # creating a virtual machine ubuntu
+        db.vm.network "private_network", ip: "192.168.56.11"
+        # creating a private network
+        # sync app folder from localhost to VM
+        db.vm.synced_folder ".", "/home/vagrant/app"
+        db.vm.provision :shell, path: "provision_db.sh"
+    end
+  end
+
+  ```
+
+- Run `vagrant destroy` , delete the .vagrant file
+- Run `vagrant up`
+- ssh in the app `vagrant ssh app`
+- `cd` in the location of the app
+- Run `npm install`
+- `npm start`
+- This should lauch the app with the posts and fibonacci series
 
 ```
 
