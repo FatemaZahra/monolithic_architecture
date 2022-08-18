@@ -162,7 +162,7 @@ Your app is ready ad listening on port 3000 appears once connected.
 
 ## Edit mongod.conf file
 
-- Run `cd/etc` then `ls` and `sudo nano mongod.conf`
+- Run `cd /etc` then `ls` and `sudo nano mongod.conf`
 - Go to network interface and change bindip to `0.0.0.0`
 - `cat mongod.conf` to check
 
