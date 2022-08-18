@@ -115,6 +115,8 @@ Your app is ready ad listening on port 3000 appears once connected.
 ## Multi-Machine
 
 ![Screenshot 2022-08-16 at 16 45 50](https://user-images.githubusercontent.com/102330725/184922480-dd8cceeb-dc3c-421c-bffe-bebb9dc6dfe6.png)
+![Screenshot 2022-08-18 at 09 47 58](https://user-images.githubusercontent.com/102330725/185352864-333beb80-ed8a-4426-9549-aeb57592bf97.png)
+
 
 ### To provision reverse proxy
 
